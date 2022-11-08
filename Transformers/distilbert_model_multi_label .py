@@ -235,7 +235,7 @@ def train_model(start_epochs,  n_epochs,
             mask = data['mask'].to(device, dtype = torch.long)
             outputs = model(ids,mask)
 
-            loss = loss_fn(outputs, targets)
+            loss = loss_fn(outputs.view(-1,num_labels),targets.type_as(outputs).view(-1,num_labels))
             valid_loss = valid_loss + ((1 / (batch_idx + 1)) * (loss.item() - valid_loss))
 
       # calculate average losses
