@@ -213,8 +213,8 @@ def train_model(start_epochs,  n_epochs,
         #Backward
         #loss = loss_func(outputs.view(-1,num_labels),targets.type_as(logits).view(-1,num_labels))
         loss = loss_fn(outputs.view(-1,num_labels),targets.type_as(outputs).view(-1,num_labels))
-        print("outputs.view(-1,num_labels):shape:{}{}".format(np.shape(outputs.view(-1,num_labels)),outputs.view(-1,num_labels)))
-        print("targets.type_as(outputs).view(-1,num_labels):shape:{}{}".format(np.shape(targets.type_as(outputs).view(-1,num_labels)),targets.type_as(outputs).view(-1,num_labels)))
+        #print("outputs.view(-1,num_labels):shape:{}{}".format(np.shape(outputs.view(-1,num_labels)),outputs.view(-1,num_labels)))
+        #print("targets.type_as(outputs).view(-1,num_labels):shape:{}{}".format(np.shape(targets.type_as(outputs).view(-1,num_labels)),targets.type_as(outputs).view(-1,num_labels)))
         loss.backward()
         optimizer.step()
         train_loss = train_loss + ((1 / (batch_idx + 1)) * (loss.item() - train_loss))
